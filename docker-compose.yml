@@ -20,17 +20,17 @@ services:
     networks:
       - micro_network
     restart: always
-
   order-db:
     container_name: corder_dbase
     image: postgres:latest
     ports:
-    - "32002:5432"
+    - "5434:5432"
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: Mango42
+      POSTGRES_USER: postgres3
+      POSTGRES_PASSWORD: Mango44
       POSTGRES_DB: order
     networks:
       - micro_network
     volumes:
     - orderdb_vol:/var/lib/postgresql/data
+    - ./initdb-order.sql:/docker-entrypoint-initdb.d/initdb-order.sql
