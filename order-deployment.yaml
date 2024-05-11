@@ -1,0 +1,23 @@
+# order-app-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order-app
+  template:
+    metadata:
+      labels:
+        app: order-app
+    spec:
+      containers:
+      - name: order-app
+        image: vksan9/order-app:latest
+        ports:
+        - containerPort: 5003
+        env:
+        - name: DATABASE_HOST
+          value: order-db  # Use the service name here

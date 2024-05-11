@@ -20,6 +20,7 @@ services:
     networks:
       - micro_network
     restart: always
+    
   order-db:
     container_name: corder_dbase
     image: postgres:latest
